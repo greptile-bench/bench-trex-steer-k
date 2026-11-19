@@ -10,9 +10,13 @@ const page = `<!doctype html>
       <label>People <input id="people" type="number" min="1" step="1" value="2" required></label>
       <label>Tip % <input id="tip" type="number" min="0" step="1" value="10"></label>
       <button type="submit">Split</button>
+      <button type="reset">Clear</button>
     </form>
     <p id="result" aria-live="polite"></p>
     <script>
+      document.getElementById('split').addEventListener('reset', () => {
+        document.getElementById('result').textContent = ''
+      })
       document.getElementById('split').addEventListener('submit', (event) => {
         event.preventDefault()
         const total = Number(document.getElementById('total').value)
